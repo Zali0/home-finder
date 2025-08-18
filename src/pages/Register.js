@@ -32,7 +32,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:7000/api/user", formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user`, formData);
       toast.success("User added successfully!");
       setFormData(user);
       navigate("/user");

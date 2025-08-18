@@ -63,7 +63,7 @@ export default function User() {
   try {
     const property = properties.find((p) => p._id === propertyId);
     console.log("Property bought: " + (property))
-    await axios.post("http://localhost:7000/api/purchase", {
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/purchase`, {
       email,
       amount,
       propertyId,
@@ -82,7 +82,7 @@ export default function User() {
 
   const verifyPayment = async (reference, propertyId, amount, email) => {
     try {
-      const res = await axios.post("http://localhost:7000/api/verify-payment", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/verify-payment`, {
         reference,
         propertyId,
         amount,
@@ -115,7 +115,7 @@ export default function User() {
 
   const updatePropertyStatus = async (propertyId) => {
     try {
-      await axios.put(`http://localhost:7000/api/properties/${propertyId}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/properties/${propertyId}`, {
         availability: "Unavailable",
       });
       toast.success("Property marked as unavailable!");
@@ -129,7 +129,7 @@ export default function User() {
 
   const fetchProperties = async () => {
     try {
-      const response = await axios.get("http://localhost:7000/api/properties");
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties`);
       setProperties(response.data);
     } catch (error) {
       console.error("Error fetching properties:", error);

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = async () => {
       try {
-        const res = await fetch("http://localhost:7000/api/profile", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
           credentials: "include",
         });
         // console.log
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
 
   const logout = async () => {
-    await fetch("http://localhost:7000/api/logout", {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/logout`, {
       method: "POST",
       credentials: "include",
     });

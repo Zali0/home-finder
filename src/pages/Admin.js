@@ -73,7 +73,7 @@ export default function Admin() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:7000/api/users');  
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);  
       setUsers(response.data);
     } catch(error) {
       console.error("Error fetching users:", error);
@@ -82,7 +82,7 @@ export default function Admin() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:7000/api/users/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${id}`);
       fetchUsers();
     } catch (error) {
       console.error("Error deleting user:", error.response ? error.response.data : error.message);
@@ -94,7 +94,7 @@ export default function Admin() {
 
   const addUser = async () => {
     try {
-      await axios.post("http://localhost:7000/api/user", UserFormData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/user`, UserFormData);
       toast.success("User added successfully!");
       setUserFormData(userData);
       fetchUsers();
@@ -106,7 +106,7 @@ export default function Admin() {
 
   const updateUser = async () => {
     try {
-      await axios.put(`http://localhost:7000/api/users/${editUserId}`, UserFormData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/users/${editUserId}`, UserFormData);
       toast.success("User updated successfully!");
       setUserFormData(userData);
       setIsEditingUser(false);
@@ -120,7 +120,7 @@ export default function Admin() {
 
   const fetchProperties = async () => {
     try {
-      const response = await axios.get('http://localhost:7000/api/properties');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties`);
       setProperties(response.data);
     } catch (error) {
       console.error("Error fetching properties:", error);
@@ -134,7 +134,7 @@ export default function Admin() {
     }
 
     try {
-      await axios.post("http://localhost:7000/api/property", PropertyFormData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/property`, PropertyFormData);
       toast.success("Property added successfully!");
       setPropertyFormData(property);
       fetchProperties();
@@ -151,7 +151,7 @@ export default function Admin() {
     }
 
     try {
-      await axios.put(`http://localhost:7000/api/properties/${editPropertyId}`, PropertyFormData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/properties/${editPropertyId}`, PropertyFormData);
       toast.success("Property updated successfully!");
       setPropertyFormData(property);
       setIsEditingProperty(false);
@@ -165,7 +165,7 @@ export default function Admin() {
 
   const deleteProperty = async (id) => {
     try {
-      await axios.delete(`http://localhost:7000/api/properties/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/properties/${id}`);
       toast.success("Property deleted successfully!");
       fetchProperties();
     } catch (error) {
@@ -199,7 +199,7 @@ export default function Admin() {
   // Fetch purchases
   const fetchPurchases = async () => {
     try {
-      const res = await axios.get("http://localhost:7000/api/purchases");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/purchases`);
       setPurchases(res.data);
       console.log(res.data)
     } catch (error) {
@@ -213,7 +213,7 @@ export default function Admin() {
   const deletePurchase = async (id) => {
     if (!window.confirm("Are you sure you want to delete this purchase?")) return;
     try {
-      await axios.delete(`http://localhost:7000/api/purchases/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/purchases/${id}`);
       toast.success("Purchase deleted successfully!");
       fetchPurchases();
     } catch (error) {
