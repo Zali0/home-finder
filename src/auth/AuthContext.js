@@ -12,6 +12,8 @@ export const AuthProvider = ({ children }) => {
 
 
   const loadUser = async () => {
+      console.log("API URL:", process.env.REACT_APP_API_URL);
+      console.log("API URL:", `${process.env.REACT_APP_API_URL}/api/profile`);
       try {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
           credentials: "include",
