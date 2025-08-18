@@ -3,7 +3,6 @@ import './Admin.css';
 import { AuthContext } from '../auth/AuthContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
@@ -277,7 +276,10 @@ export default function Admin() {
           <div className="form mb-4" style={{ textAlign: 'center', padding:'10px' }}>
             <input placeholder="Name" type="text" name="name" value={UserFormData.name} onChange={handleUserChange} />
             <input placeholder="Email" type="email" name="email" value={UserFormData.email} onChange={handleUserChange} />
-            <input placeholder="Password" type="text" name="password" value={UserFormData.password} onChange={handleUserChange}/>
+            
+            <input placeholder="Password" type="password" name="password" value={isEditingUser ?  "*************" : UserFormData.password} onChange={handleUserChange} disabled={isEditingUser} />
+
+
             <select name="role" value={UserFormData.role} onChange={handleUserChange} style={{ width: '200px', padding: '14px', marginLeft: '20px', borderRadius: '7px', border: '1px solid #ccc' }}>
               <option value="Admin">Admin</option>
               <option value="User">User</option>
