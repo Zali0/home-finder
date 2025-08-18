@@ -12,7 +12,7 @@ import { AuthProvider } from './auth/AuthContext';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/home-finder">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login />} />
