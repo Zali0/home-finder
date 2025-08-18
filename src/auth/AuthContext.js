@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = async () => {
       console.log("API URL:", process.env.REACT_APP_API_URL);
-      console.log("API URL:", `${process.env.REACT_APP_API_URL}/api/profile`);
       try {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
           credentials: "include",
@@ -24,7 +23,7 @@ export const AuthProvider = ({ children }) => {
           const data = await res.json();
           const decoded = jwtDecode(data.token);
           setUser(decoded);
-          // console.log("Auth response:", decoded);
+          console.log("Auth response:", decoded);
 
           
         } 
