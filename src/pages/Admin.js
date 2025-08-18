@@ -201,7 +201,7 @@ export default function Admin() {
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/purchases`);
       setPurchases(res.data);
-      console.log(res.data)
+      // console.log(res.data)
     } catch (error) {
       console.error("Error fetching purchases:", error);
     }
