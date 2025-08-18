@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import User from './pages/User';
 import Login from './pages/Login';
@@ -12,7 +12,7 @@ import { AuthProvider } from './auth/AuthContext';
 function App() {
   return (
     <AuthProvider>
-      <HashRouter basename="/home-finder">
+      <Router basename="/home-finder">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/user" element={<ProtectedRoute role="User"><User /></ProtectedRoute>}/>
           <Route path="/unauthorized" element={<Unauthorized />} />
         </Routes>
-      </HashRouter>
+      </Router>
     </AuthProvider>
   );
 }
