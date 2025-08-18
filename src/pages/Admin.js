@@ -174,6 +174,10 @@ export default function Admin() {
     }
   };
 
+
+
+// everything should be fine okay
+
   const filteredProperties = properties
     .filter((p) => p.title.toLowerCase().includes(searchQuery.toLowerCase()))
     .sort((a, b) => {
