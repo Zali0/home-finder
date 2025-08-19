@@ -3,6 +3,8 @@ import './Admin.css';
 import { AuthContext } from '../auth/AuthContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import bcrypt from 'bcryptjs';
+
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
@@ -95,11 +97,11 @@ export default function Admin() {
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/api/user`, UserFormData);
       toast.success("User added successfully!");
+      userData.password 
       setUserFormData(userData);
       fetchUsers();
     } catch (error) {
-      console.error("Error adding user:", error.response ? error.response.data : error.message);
-      toast.error("Failed to add user. Please try again.");
+      toast.error("Error adding user:", error.response ? error.response.data : error.message);
     }
   };
 
@@ -112,8 +114,7 @@ export default function Admin() {
       setEditUserId(null);
       fetchUsers();
     } catch (error) {
-      console.error("Error updating user:", error.response ? error.response.data : error.message);
-      toast.error("Failed to update user. Please try again.");
+      toast.error("Error updating user:", error.response ? error.response.data : error.message);
     }
   };
 
