@@ -151,7 +151,7 @@ export default function Login() {
                 type="password"
                 className="form-control"
                 placeholder="Enter your password"
-                value={bcrypt.hash(password, 10)}
+                value= {password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
