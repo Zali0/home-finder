@@ -44,7 +44,6 @@ export default function Login() {
       
       if (res.data.token) {
         const decoded = jwtDecode(res.data.token);
-        // console.log(res);
         setUser(decoded);
         toast.success("Login successful");
         

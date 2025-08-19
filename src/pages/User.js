@@ -62,15 +62,13 @@ export default function User() {
   const createPurchase = async (propertyId, amount, email) => {
   try {
     const property = properties.find((p) => p._id === propertyId);
-    console.log("Property bought: " + (property))
     await axios.post(`${process.env.REACT_APP_API_URL}/api/purchase`, {
       email,
       amount,
       propertyId,
       item: `${property?.title} - ${property?.type}`,
     });
-
-    toast.success("Purchase record created!");
+    toast.success("Purchase recorded successfully");
   } catch (error) {
     console.error("Error creating purchase:", error);
     toast.error("Could not save purchase record.");

@@ -12,20 +12,15 @@ export const AuthProvider = ({ children }) => {
 
 
   const loadUser = async () => {
-      console.log("API URL:", process.env.REACT_APP_API_URL);
       try {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
           credentials: "include",
         });
-        // console.log
         
         if (res.ok) {
           const data = await res.json();
           const decoded = jwtDecode(data.token);
           setUser(decoded);
-          console.log("Auth response:", decoded);
-
-          
         } 
         else {
           setUser(null);
