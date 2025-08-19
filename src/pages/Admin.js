@@ -3,7 +3,6 @@ import './Admin.css';
 import { AuthContext } from '../auth/AuthContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import bcyrpt from 'bcryptjs'
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
