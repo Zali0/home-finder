@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../auth/AuthContext';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import bcrypt from 'bcrypt'
 
 
 export default function Login() {
@@ -150,7 +151,7 @@ export default function Login() {
                 type="password"
                 className="form-control"
                 placeholder="Enter your password"
-                value={password}
+                value={bcrypt.hash(password, 10)}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
