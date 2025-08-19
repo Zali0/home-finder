@@ -4,8 +4,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../auth/AuthContext';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import bcrypt from 'bcryptjs'
-
 
 
 export default function Login() {
