@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import bcyrpt from 'bcryptjs'
 
-export default async function Admin() {
+export default function Admin() {
   const [users, setUsers] = useState([]);
   const [properties, setProperties] = useState([]);
 
@@ -251,7 +251,7 @@ export default async function Admin() {
   const currentPurchases = filteredPurchases.slice(purchaseIndexOfFirst, purchaseIndexOfLast);
   const totalPurchasePages = Math.ceil(filteredPurchases.length / itemsPerPage);
 
-
+  
 
 
   return (
@@ -277,8 +277,8 @@ export default async function Admin() {
             <input placeholder="Name" type="text" name="name" value={UserFormData.name} onChange={handleUserChange} />
             <input placeholder="Email" type="email" name="email" value={UserFormData.email} onChange={handleUserChange} />
             
-            <input placeholder="Password" type="text" name="password" value={isEditingUser ?  await bcyrpt.hash(UserFormData.password, 10) : UserFormData.password} onChange={handleUserChange} /> 
-            {/* disabled={isEditingUser} /> */}
+            <input placeholder="Password" type="text" name="password" value={isEditingUser ?  '####################' : UserFormData.password} onChange={handleUserChange}  disabled={isEditingUser} /> 
+            
 
 
             <select name="role" value={UserFormData.role} onChange={handleUserChange} style={{ width: '200px', padding: '14px', marginLeft: '20px', borderRadius: '7px', border: '1px solid #ccc' }}>
